@@ -17,6 +17,7 @@ import ForgetPassword from './components/User/ForgetPassword';
 import OrganaizationForgetPassword from "./components/organization/OrganaizationForgetPassword"
 import UserHomePage from './components/User/UserHomePage';
 import Pnf from './pages/Pnf';
+import AdminOrganizationsList from './components/admin/AdminOrganizationlist';
 
 function App() {
   const url = 'http://localhost:8000';
@@ -32,8 +33,10 @@ function App() {
         <Route path="/user/homepage" element={[<UserNavbar />, <UserHomePage />, <Footer />]} />
 
         <Route path="/admin/login" element={[<Navbar />, <AdminLogin />, <Footer />]} />
-        <Route path="/admin" element={[<AdminLayout />, <Footer />]}>
-          <Route path='/admin/dashboard' element={<AdminDashboard />} />
+        <Route path="/admin" element={<><AdminLayout /><Footer /></>}>
+          <Route path="dashboard" element={<AdminDashboard />} />
+           <Route path="/admin/organizations" element={<AdminOrganizationsList url={url} />} />
+        </Route>
 
         <Route path='/organization/login' element={[<Navbar />, <OrganizationLogin />, <Footer />]} />
         <Route path='/organization/register' element={[<Navbar />, <OrganizationRegister />, <Footer />]} />
